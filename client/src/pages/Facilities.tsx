@@ -56,9 +56,9 @@ export default function Facilities() {
         image="https://images.unsplash.com/photo-1564981797816-1043664bf78d?q=80&w=1974&auto=format&fit=crop"
       />
 
-      <section className="py-20">
+      <section className="py-12 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {facilities.map((item, i) => (
               <div key={i} className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100">
                 <div className="h-48 overflow-hidden relative">
@@ -72,9 +72,9 @@ export default function Facilities() {
                     {item.icon}
                   </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="text-xl font-display font-bold text-secondary mb-3">{item.title}</h3>
-                  <p className="text-gray-600 leading-relaxed text-sm">{item.desc}</p>
+                <div className="p-6 md:p-8">
+                  <h3 className="text-lg md:text-xl font-display font-bold text-secondary mb-2 md:mb-3">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed text-xs md:text-sm">{item.desc}</p>
                 </div>
               </div>
             ))}

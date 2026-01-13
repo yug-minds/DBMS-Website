@@ -7,9 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { useCreateCareer } from "@/hooks/use-careers";
-import { Loader2 } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 // Schema for Careers
 const careerSchema = z.object({
@@ -23,17 +22,53 @@ const careerSchema = z.object({
 });
 
 export default function Contact() {
-  const careerMutation = useCreateCareer();
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const careerForm = useForm<z.infer<typeof careerSchema>>({
     resolver: zodResolver(careerSchema),
     defaultValues: { name: "", email: "", phone: "", position: "", experience: "", resumeLink: "", message: "" },
   });
 
-  function onCareerSubmit(values: z.infer<typeof careerSchema>) {
-    careerMutation.mutate(values, {
-      onSuccess: () => careerForm.reset(),
-    });
+  async function onCareerSubmit(values: z.infer<typeof careerSchema>) {
+    setIsSubmitting(true);
+    
+    try {
+      // Get API URL from environment or use default
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      
+      const response = await fetch(`${API_URL}/api/career-application`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to submit application');
+      }
+
+      careerForm.reset();
+      toast({
+        title: "Application Received Successfully!",
+        description: "Thank you for your interest in joining our team. We will contact you soon.",
+        variant: "default",
+      });
+    } catch (error) {
+      console.error('Error submitting application:', error);
+      toast({
+        title: "Submission Failed",
+        description: error instanceof Error 
+          ? error.message 
+          : "Failed to submit application. Please try again later or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -45,79 +80,79 @@ export default function Contact() {
         image="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?q=80&w=2070&auto=format&fit=crop"
       />
 
-      <section className="py-20">
+      <section className="py-12 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
             
             {/* Contact Info */}
-            <div className="space-y-8">
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
-                <h2 className="text-2xl font-display font-bold text-secondary mb-6">Get in Touch</h2>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-full text-primary">
-                      <MapPin className="w-6 h-6" />
+            <div className="space-y-6 md:space-y-8">
+              <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200">
+                <h2 className="text-xl sm:text-2xl font-display font-bold text-secondary mb-4 md:mb-6">Get in Touch</h2>
+                <div className="space-y-4 md:space-y-6">
+                  <div className="flex items-start gap-3 md:gap-4">
+                    <div className="bg-primary/10 p-2 md:p-3 rounded-full text-primary shrink-0">
+                      <MapPin className="w-5 h-5 md:w-6 md:h-6" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Address</h4>
-                      <p className="text-gray-600 text-sm">
+                      <h4 className="font-bold text-gray-900 text-sm md:text-base">Address</h4>
+                      <p className="text-gray-600 text-xs md:text-sm">
                         Dawn Buds Model School<br/>
-                        123 Shyamlal Buildings<br/>
+                        1-11-110/17/B/9, Shamlal Buildings<br/>
+                        beside Sai Hanuman Temple, Begumpet<br/>
                         Hyderabad, Telangana 500016
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-full text-primary">
-                      <Phone className="w-6 h-6" />
+                  <div className="flex items-start gap-3 md:gap-4">
+                    <div className="bg-primary/10 p-2 md:p-3 rounded-full text-primary shrink-0">
+                      <Phone className="w-5 h-5 md:w-6 md:h-6" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Phone</h4>
-                      <p className="text-gray-600 text-sm">+91 98765 43210</p>
-                      <p className="text-gray-600 text-sm">+91 40 2345 6789</p>
+                      <h4 className="font-bold text-gray-900 text-sm md:text-base">Phone</h4>
+                      <p className="text-gray-600 text-xs md:text-sm">+91 88868 88275</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-full text-primary">
-                      <Mail className="w-6 h-6" />
+                  <div className="flex items-start gap-3 md:gap-4">
+                    <div className="bg-primary/10 p-2 md:p-3 rounded-full text-primary shrink-0">
+                      <Mail className="w-5 h-5 md:w-6 md:h-6" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Email</h4>
-                      <p className="text-gray-600 text-sm">info@dawnbuds.edu.in</p>
-                      <p className="text-gray-600 text-sm">admissions@dawnbuds.edu.in</p>
+                      <h4 className="font-bold text-gray-900 text-sm md:text-base">Email</h4>
+                      <p className="text-gray-600 text-xs md:text-sm break-all">dawnbudsmodelschool@gmail.com</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-full text-primary">
-                      <Clock className="w-6 h-6" />
+                  <div className="flex items-start gap-3 md:gap-4">
+                    <div className="bg-primary/10 p-2 md:p-3 rounded-full text-primary shrink-0">
+                      <Clock className="w-5 h-5 md:w-6 md:h-6" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-900">Office Hours</h4>
-                      <p className="text-gray-600 text-sm">Mon - Sat: 9:00 AM - 4:00 PM</p>
+                      <h4 className="font-bold text-gray-900 text-sm md:text-base">Office Hours</h4>
+                      <p className="text-gray-600 text-xs md:text-sm">Mon - Sat: 9:00 AM - 4:00 PM</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Map Placeholder */}
-              <div className="bg-gray-200 h-64 rounded-2xl overflow-hidden shadow-inner">
+              <div className="bg-gray-200 h-48 md:h-64 rounded-2xl overflow-hidden shadow-inner">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.452632289868!2d78.48667107593256!3d17.4367582834575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9a1f5c3d4c3d%3A0x6b8b0e5e0a0a0a0a!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+                  src="https://www.google.com/maps?q=Dawn+Buds+Model+School+Begumpet+Hyderabad+1-11-110/17/B/9+Shamlal+Buildings+beside+Sai+Hanuman+Temple&output=embed" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
                   allowFullScreen 
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
                 ></iframe>
               </div>
             </div>
 
             {/* Careers Form */}
             <div>
-              <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-                <h2 className="text-2xl font-display font-bold text-secondary mb-2">Join Our Team</h2>
-                <p className="text-gray-500 mb-8">We are always looking for passionate educators.</p>
+              <div className="bg-white p-6 md:p-8 rounded-2xl shadow-xl border border-gray-100">
+                <h2 className="text-xl sm:text-2xl font-display font-bold text-secondary mb-2">Join Our Team</h2>
+                <p className="text-gray-500 mb-6 md:mb-8 text-sm md:text-base">We are always looking for passionate educators.</p>
                 
                 <Form {...careerForm}>
                   <form onSubmit={careerForm.handleSubmit(onCareerSubmit)} className="space-y-4">
@@ -207,8 +242,8 @@ export default function Contact() {
                       )}
                     />
 
-                    <Button type="submit" className="w-full bg-secondary hover:bg-secondary/90" disabled={careerMutation.isPending}>
-                      {careerMutation.isPending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Submit Application"}
+                    <Button type="submit" className="w-full bg-secondary hover:bg-secondary/90" disabled={isSubmitting}>
+                      {isSubmitting ? "Submitting..." : "Submit Application"}
                     </Button>
                   </form>
                 </Form>

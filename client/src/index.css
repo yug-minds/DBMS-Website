@@ -11,7 +11,7 @@
   /* Dawn Buds Palette */
   /* Primary: #7C170D (Maroon) -> 4 80% 27% */
   /* Secondary: #141A45 (Navy) -> 233 55% 17% */
-  /* Accent: #EC41D5 (Pink) -> 308 81% 59% */
+  /* Accent: #C19A6B (Hazelwood) -> 32 45% 59% */
 
   --background: 0 0% 100%;
   --foreground: 233 55% 17%; /* Navy text */
@@ -31,7 +31,7 @@
   --muted: 220 14% 96%;
   --muted-foreground: 233 20% 40%;
 
-  --accent: 308 81% 59%;
+  --accent: 32 45% 59%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;

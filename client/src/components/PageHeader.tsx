@@ -9,7 +9,7 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, subtitle, image, align = "center" }: PageHeaderProps) {
   return (
-    <div className="relative bg-secondary overflow-hidden py-20 lg:py-28">
+    <div className="relative bg-secondary overflow-hidden py-12 sm:py-16 md:py-20 lg:py-28">
       {/* Background Image with Overlay */}
       {image && (
         <div className="absolute inset-0 z-0">
@@ -31,11 +31,11 @@ export function PageHeader({ title, subtitle, image, align = "center" }: PageHea
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-4 md:mb-6">
             {title}
           </h1>
           {subtitle && (
-            <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-light leading-relaxed">
               {subtitle}
             </p>
           )}
