@@ -1,4 +1,5 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Navigation } from "@/components/Navigation";
@@ -31,9 +32,21 @@ function Router() {
   );
 }
 
+// Component to handle scroll restoration on route change
+function ScrollToTop() {
+  const [location] = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+  
+  return null;
+}
+
 function App() {
   return (
     <TooltipProvider>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navigation />
         <main className="flex-grow pt-20"> {/* pt-20 to account for fixed header */}

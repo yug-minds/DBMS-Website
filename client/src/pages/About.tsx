@@ -43,14 +43,14 @@ export default function About() {
 
       {/* Vision and Mission Cards */}
       <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:justify-center gap-6 md:gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow w-full md:w-[400px]"
+              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow w-full md:flex-1 md:max-w-[500px]"
             >
               <div className="p-8 md:p-10">
                 <div className="flex items-center gap-3 mb-6">
@@ -75,7 +75,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow w-full md:w-[400px]"
+              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow w-full md:flex-1 md:max-w-[500px]"
             >
               <div className="p-8 md:p-10">
                 <div className="flex items-center gap-3 mb-6">
@@ -98,47 +98,57 @@ export default function About() {
         </div>
       </section>
 
-      {/* Leadership */}
-      <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
+      {/* Our Staff */}
+      <section className="py-12 md:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-secondary">Our Leadership</h2>
-            <p className="text-gray-600 mt-3 md:mt-4">The visionaries guiding our institution</p>
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-secondary">Our Staff</h2>
+            <p className="text-gray-600 mt-3 md:mt-4">The dedicated educators and support team committed to student success</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
-            {/* Cards for leadership */}
-            {[
-              {
-                name: "Mr. Rajesh Kumar",
-                role: "Correspondent",
-                img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop"
-              },
-              {
-                name: "Mrs. Lakshmi Reddy",
-                role: "Principal",
-                img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
-              },
-              {
-                name: "Mr. P. Sharma",
-                role: "Academic Director",
-                img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1000&auto=format&fit=crop"
-              }
-            ].map((leader, i) => (
-              <div key={i} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all border border-gray-100 text-center group">
-                <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-gray-50 group-hover:border-primary transition-colors">
-                  <img src={leader.img} alt={leader.name} className="w-full h-full object-cover" />
-                </div>
-                <h3 className="text-xl font-display font-bold text-secondary">{leader.name}</h3>
-                <p className="text-accent font-medium text-sm mt-1">{leader.role}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="space-y-6"
+            >
+              <div>
+                <div className="w-12 md:w-16 h-1 bg-accent rounded-full mb-4 md:mb-6" />
+                <p className="text-gray-600 leading-relaxed text-base md:text-lg">
+                  At Dawn Buds Model School, we are proud of our exceptional team of educators, administrators, and support staff who form the backbone of our institution. Our staff members are not just teachers, but mentors, guides, and role models who are deeply committed to nurturing the holistic development of every student.
+                </p>
+                <p className="text-gray-600 leading-relaxed text-base md:text-lg mt-4">
+                  With years of experience and a passion for education, our dedicated team works tirelessly to create a supportive learning environment where students can thrive academically, socially, and emotionally. Each member brings unique expertise and a shared commitment to excellence, ensuring that every child receives the attention and guidance they need to reach their full potential.
+                </p>
+                <p className="text-gray-600 leading-relaxed text-base md:text-lg mt-4">
+                  Together, our staff embodies the values and vision of Dawn Buds Model School, fostering a culture of continuous learning, innovation, and care that makes our institution a truly special place for education.
+                </p>
               </div>
-            ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="relative"
+            >
+              <div className="rounded-2xl shadow-lg overflow-hidden">
+                <img 
+                  src="/Dbms Event Pics/Our Well Dedicated Staff.jpeg" 
+                  alt="Our Well Dedicated Staff at Dawn Buds Model School" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Our Branches */}
-      <section className="py-12 md:py-16 lg:py-20 bg-white">
+      <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12 lg:mb-16">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-secondary mb-3 md:mb-4">Our Branches</h2>

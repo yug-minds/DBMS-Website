@@ -23,7 +23,7 @@ export default function Home() {
                 <motion.span 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="inline-block py-1 px-3 rounded-full bg-accent/20 text-accent border border-accent/30 text-sm font-bold tracking-wider mb-6 backdrop-blur-sm"
+                  className="inline-block py-1 px-3 rounded-full text-white text-lg font-bold tracking-wider mb-6"
                 >
                   WELCOME TO DAWN BUDS
                 </motion.span>
@@ -41,7 +41,7 @@ export default function Home() {
                   transition={{ delay: 0.4 }}
                   className="text-base sm:text-lg md:text-xl text-white/90 mb-6 md:mb-8 max-w-2xl mx-auto px-2"
                 >
-                  24 years of excellence in education. Nurturing students with values, knowledge, and skills for tomorrow's world.
+                  25 years of excellence in education. Nurturing students with values, knowledge, and skills for tomorrow's world.
                 </motion.p>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -50,8 +50,8 @@ export default function Home() {
                   className="flex flex-col sm:flex-row gap-4 justify-center"
                 >
                   <Link href="/admissions">
-                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6 h-auto">
-                      Admission Open 2024
+                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6 h-auto" key="admission-btn-2026">
+                      Admission Open for 2026 - 27
                     </Button>
                   </Link>
                   <Link href="/contact">
@@ -70,7 +70,7 @@ export default function Home() {
       <div className="bg-primary py-8 md:py-12 relative z-30 mt-8 md:mt-12 mx-4 md:mx-8 lg:mx-12 rounded-2xl shadow-xl grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center text-white">
         <div className="space-y-2 border-b md:border-b-0 md:border-r border-white/20 pb-6 md:pb-0">
           <Trophy className="w-8 h-8 md:w-10 md:h-10 mx-auto text-accent mb-3 md:mb-4" />
-          <h3 className="font-display font-bold text-lg md:text-xl">24 Years of Excellence</h3>
+          <h3 className="font-display font-bold text-lg md:text-xl">25 Years of Excellence</h3>
           <p className="text-white/80 text-xs md:text-sm">Serving education since 2000</p>
         </div>
         <div className="space-y-2 border-b md:border-b-0 md:border-r border-white/20 pb-6 md:pb-0">
@@ -149,41 +149,84 @@ export default function Home() {
             <p className="text-gray-600 text-base md:text-lg">Tailored learning environments for every stage of development.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 title: "Pre-Primary",
-                desc: "Playway method focusing on motor skills and social interaction.",
-                color: "bg-amber-50 border-amber-100",
-                icon: "🎨",
+                desc: "Playway method focusing on motor skills and social interaction. Nurturing young minds through creative play and exploration.",
+                image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1000&auto=format&fit=crop",
+                gradient: "from-amber-500 to-orange-500",
+                bgColor: "bg-amber-50",
+                borderColor: "border-amber-200",
+                iconBg: "bg-amber-100",
+                iconColor: "text-amber-600",
                 link: "/academics"
               },
               {
                 title: "Primary",
-                desc: "Foundation building with activity-based learning.",
-                color: "bg-blue-50 border-blue-100",
-                icon: "📚",
+                desc: "Foundation building with activity-based learning. Developing critical thinking and problem-solving skills from an early age.",
+                image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop",
+                gradient: "from-blue-500 to-cyan-500",
+                bgColor: "bg-blue-50",
+                borderColor: "border-blue-200",
+                iconBg: "bg-blue-100",
+                iconColor: "text-blue-600",
                 link: "/academics"
               },
               {
                 title: "High School",
-                desc: "Rigorous academic preparation for board exams and competitive future.",
-                color: "bg-purple-50 border-purple-100",
-                icon: "🔬",
+                desc: "Rigorous academic preparation for board exams and competitive future. Empowering students for success beyond the classroom.",
+                image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1000&auto=format&fit=crop",
+                gradient: "from-purple-500 to-indigo-500",
+                bgColor: "bg-purple-50",
+                borderColor: "border-purple-200",
+                iconBg: "bg-purple-100",
+                iconColor: "text-purple-600",
                 link: "/academics"
               }
             ].map((wing, i) => (
               <motion.div 
                 key={i}
-                whileHover={{ y: -5 }}
-                className={`p-8 rounded-2xl border ${wing.color} transition-all hover:shadow-lg`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative overflow-hidden rounded-2xl border-2 bg-white shadow-md hover:shadow-2xl transition-all duration-300"
               >
-                <div className="text-4xl mb-6">{wing.icon}</div>
-                <h3 className="text-2xl font-display font-bold text-secondary mb-3">{wing.title}</h3>
-                <p className="text-gray-600 mb-6">{wing.desc}</p>
-                <Link href={wing.link}>
-                  <span className="text-primary font-bold text-sm hover:underline cursor-pointer">Learn More →</span>
-                </Link>
+                {/* Image Section */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={wing.image} 
+                    alt={wing.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${wing.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300`} />
+                  <div className={`absolute top-4 right-4 ${wing.iconBg} ${wing.iconColor} p-3 rounded-xl shadow-lg`}>
+                    {i === 0 && "🎨"}
+                    {i === 1 && "📚"}
+                    {i === 2 && "🔬"}
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="p-6 md:p-8">
+                  <h3 className="text-2xl font-display font-bold text-secondary mb-3 group-hover:text-primary transition-colors">
+                    {wing.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed text-sm md:text-base">
+                    {wing.desc}
+                  </p>
+                  <Link href={wing.link}>
+                    <span className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:gap-3 transition-all cursor-pointer group-hover:text-accent">
+                      Learn More 
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </Link>
+                </div>
+
+                {/* Decorative Element */}
+                <div className={`absolute bottom-0 left-0 right-0 h-1 ${wing.bgColor} group-hover:h-2 transition-all duration-300`} />
               </motion.div>
             ))}
           </div>
@@ -343,7 +386,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 md:mb-6">Start Your Journey With Us</h2>
           <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 md:mb-10 max-w-2xl mx-auto">
-            Admissions are open for the academic year 2024-25. Give your child the advantage of a holistic education.
+            Admissions are open for the academic year 2026-27. Give your child the advantage of a holistic education.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/admissions">

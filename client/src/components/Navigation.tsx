@@ -34,8 +34,6 @@ export function Navigation() {
           </div>
           <div className="flex items-center gap-4">
             <span className="opacity-80">EST. 2000</span>
-            <span className="w-px h-3 bg-white/20"></span>
-            <span className="opacity-80">ISO 9001:2015 Certified</span>
           </div>
         </div>
       </div>

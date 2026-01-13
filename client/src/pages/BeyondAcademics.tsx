@@ -1,6 +1,8 @@
 import { PageHeader } from "@/components/PageHeader";
 import { Music, Award, Palette, Microscope, Star, Handshake } from "lucide-react";
 import { motion } from "framer-motion";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import { useState, useEffect } from "react";
 
 export default function BeyondAcademics() {
   return (
@@ -25,22 +27,14 @@ export default function BeyondAcademics() {
                 We believe in celebrating our rich heritage and nurturing artistic talents. Our Annual Day is a grand spectacle involving every student. We also celebrate festivals like Sankranti, Independence Day, and Children's Day with fervor.
               </p>
             </div>
-            {/* annual day stage */}
-            <img 
-              src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop" 
-              alt="Cultural Events" 
-              className="rounded-2xl shadow-xl w-full h-64 md:h-80 object-cover"
-            />
+            {/* Cultural Events Carousel */}
+            <CulturalEventsCarousel />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center mb-12 md:mb-16 lg:mb-24">
             <div className="order-last md:order-first">
-               {/* art class */}
-               <img 
-                src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop" 
-                alt="Co-curriculars" 
-                className="rounded-2xl shadow-xl w-full h-64 md:h-80 object-cover"
-              />
+              {/* Co-Curricular Activities Carousel */}
+              <CoCurricularCarousel />
             </div>
             <div className="space-y-4 md:space-y-6">
               <div className="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-3 md:mb-4">
@@ -63,12 +57,8 @@ export default function BeyondAcademics() {
                 Curiosity is the mother of invention. Our annual Science Fair allows students to demonstrate their scientific temper through working models and experiments.
               </p>
             </div>
-            {/* science fair project */}
-            <img 
-              src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?q=80&w=1974&auto=format&fit=crop" 
-              alt="Science Fair" 
-              className="rounded-2xl shadow-xl w-full h-64 md:h-80 object-cover"
-            />
+            {/* Science & Innovation Carousel */}
+            <ScienceInnovationCarousel />
           </div>
 
         </div>
@@ -175,6 +165,150 @@ export default function BeyondAcademics() {
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+function CulturalEventsCarousel() {
+  const [api, setApi] = useState<CarouselApi>();
+  const culturalImages = [
+    "/Dbms Event Pics/Bathukamma Celebrations.jpeg",
+    "/Dbms Event Pics/2_Krishnastami Celebrations.jpg"
+  ];
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    // Auto-play carousel - change image every 4 seconds
+    const interval = setInterval(() => {
+      const currentIndex = api.selectedScrollSnap();
+      if (currentIndex === culturalImages.length - 1) {
+        // If at last image, go back to first
+        api.scrollTo(0);
+      } else {
+        // Otherwise, go to next
+        api.scrollNext();
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [api, culturalImages.length]);
+
+  return (
+    <div className="relative rounded-2xl shadow-xl overflow-hidden w-full">
+      <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
+        <CarouselContent className="-ml-0">
+          {culturalImages.map((image, index) => (
+            <CarouselItem key={index} className="pl-0 basis-full">
+              <div className="relative w-full aspect-[4/3] md:aspect-[3/2] overflow-hidden rounded-2xl">
+                <img
+                  src={image}
+                  alt={index === 0 ? "Bathukamma Celebrations" : "Krishna Astami Celebrations"}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </div>
+  );
+}
+
+function CoCurricularCarousel() {
+  const [api, setApi] = useState<CarouselApi>();
+  const coCurricularImages = [
+    "/Dbms Event Pics/Sports Activity.jpeg",
+    "/Dbms Event Pics/3_Yoga Day.jpeg"
+  ];
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    // Auto-play carousel - change image every 4 seconds
+    const interval = setInterval(() => {
+      const currentIndex = api.selectedScrollSnap();
+      if (currentIndex === coCurricularImages.length - 1) {
+        // If at last image, go back to first
+        api.scrollTo(0);
+      } else {
+        // Otherwise, go to next
+        api.scrollNext();
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [api, coCurricularImages.length]);
+
+  return (
+    <div className="relative rounded-2xl shadow-xl overflow-hidden w-full">
+      <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
+        <CarouselContent className="-ml-0">
+          {coCurricularImages.map((image, index) => (
+            <CarouselItem key={index} className="pl-0 basis-full">
+              <div className="relative w-full aspect-[4/3] md:aspect-[3/2] overflow-hidden rounded-2xl">
+                <img
+                  src={image}
+                  alt={index === 0 ? "Sports Activity" : "Yoga Day"}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </div>
+  );
+}
+
+function ScienceInnovationCarousel() {
+  const [api, setApi] = useState<CarouselApi>();
+  const scienceImages = [
+    "/Dbms Event Pics/3_Robotics Expo.jpeg",
+    "/Dbms Event Pics/3_Science Fair.jpeg"
+  ];
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    // Auto-play carousel - change image every 4 seconds
+    const interval = setInterval(() => {
+      const currentIndex = api.selectedScrollSnap();
+      if (currentIndex === scienceImages.length - 1) {
+        // If at last image, go back to first
+        api.scrollTo(0);
+      } else {
+        // Otherwise, go to next
+        api.scrollNext();
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [api, scienceImages.length]);
+
+  return (
+    <div className="relative rounded-2xl shadow-xl overflow-hidden w-full">
+      <Carousel setApi={setApi} className="w-full" opts={{ loop: true }}>
+        <CarouselContent className="-ml-0">
+          {scienceImages.map((image, index) => (
+            <CarouselItem key={index} className="pl-0 basis-full">
+              <div className="relative w-full aspect-[4/3] md:aspect-[3/2] overflow-hidden rounded-2xl">
+                <img
+                  src={image}
+                  alt={index === 0 ? "Robotics Expo" : "Science Fair"}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
     </div>
   );
 }

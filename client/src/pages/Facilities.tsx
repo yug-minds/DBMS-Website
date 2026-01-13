@@ -1,5 +1,5 @@
 import { PageHeader } from "@/components/PageHeader";
-import { Monitor, FlaskConical, Library, Bus, ShieldCheck, Dumbbell } from "lucide-react";
+import { Monitor, Bot, Library, Bus, ShieldCheck, Activity } from "lucide-react";
 
 export default function Facilities() {
   const facilities = [
@@ -11,11 +11,11 @@ export default function Facilities() {
       img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
     },
     {
-      icon: <FlaskConical className="w-10 h-10 text-white" />,
-      title: "Science Labs",
-      desc: "Fully equipped Physics, Chemistry, and Biology labs to encourage experimentation and scientific inquiry.",
-      color: "bg-green-500",
-      img: "https://images.unsplash.com/photo-1576487248871-36934024d91e?q=80&w=2070&auto=format&fit=crop"
+      icon: <Bot className="w-10 h-10 text-white" />,
+      title: "Robotics Lab",
+      desc: "State-of-the-art robotics lab equipped with advanced kits, programming tools, and hands-on learning resources to foster innovation and STEM skills.",
+      color: "bg-purple-500",
+      img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop"
     },
     {
       icon: <Library className="w-10 h-10 text-white" />,
@@ -39,11 +39,11 @@ export default function Facilities() {
       img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2070&auto=format&fit=crop"
     },
     {
-      icon: <Dumbbell className="w-10 h-10 text-white" />,
+      icon: <Activity className="w-10 h-10 text-white" />,
       title: "Sports Area",
       desc: "Dedicated areas for indoor and outdoor games to promote physical fitness.",
       color: "bg-indigo-500",
-      img: "https://images.unsplash.com/photo-1562771242-a02d9090c90c?q=80&w=2071&auto=format&fit=crop"
+      img: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=2070&auto=format&fit=crop"
     }
   ];
 

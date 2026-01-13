@@ -81,7 +81,7 @@ export default function Admissions() {
       {/* admission paperwork */}
       <PageHeader 
         title="Admissions" 
-        subtitle="Join the Dawn Buds family. Applications open for Academic Year 2024-25."
+        subtitle="Join the Dawn Buds family. Applications open for Academic Year 2026-27."
         image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop"
       />
 
