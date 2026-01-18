@@ -16,7 +16,25 @@ import Gallery from "@/pages/Gallery";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
 
+// Get base path from import.meta.env or default to /DBMS-Website/
+const BASE_PATH = import.meta.env.BASE_URL || '/DBMS-Website/';
+
 function Router() {
+  // Handle GitHub Pages 404.html redirect
+  useEffect(() => {
+    const search = window.location.search;
+    
+    // Check if we're coming from the 404.html redirect
+    if (search.includes('?/')) {
+      const redirectPath = search.split('?/')[1]?.split('&')[0]?.replace(/~and~/g, '&') || '';
+      if (redirectPath) {
+        const newPath = BASE_PATH + redirectPath.replace(/^\//, '');
+        window.history.replaceState(null, '', newPath);
+        window.location.reload();
+      }
+    }
+  }, []);
+
   return (
     <Switch>
       <Route path="/" component={Home} />
