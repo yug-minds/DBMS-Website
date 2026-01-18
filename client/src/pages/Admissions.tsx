@@ -39,8 +39,8 @@ export default function Admissions() {
     setIsSubmitting(true);
     
     try {
-      // Get API URL from environment or use default
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      // Get API URL from environment or use relative URL (for Vercel serverless functions)
+      const API_URL = import.meta.env.VITE_API_URL || '';
       
       const response = await fetch(`${API_URL}/api/admission-inquiry`, {
         method: 'POST',
@@ -221,7 +221,14 @@ export default function Admissions() {
                               <SelectItem value="lkg">LKG</SelectItem>
                               <SelectItem value="ukg">UKG</SelectItem>
                               <SelectItem value="class1">Class 1</SelectItem>
+                              <SelectItem value="class2">Class 2</SelectItem>
+                              <SelectItem value="class3">Class 3</SelectItem>
+                              <SelectItem value="class4">Class 4</SelectItem>
                               <SelectItem value="class5">Class 5</SelectItem>
+                              <SelectItem value="class6">Class 6</SelectItem>
+                              <SelectItem value="class7">Class 7</SelectItem>
+                              <SelectItem value="class8">Class 8</SelectItem>
+                              <SelectItem value="class9">Class 9</SelectItem>
                               <SelectItem value="class10">Class 10</SelectItem>
                             </SelectContent>
                           </Select>

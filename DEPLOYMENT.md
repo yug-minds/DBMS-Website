@@ -43,7 +43,33 @@ See `server/README.md` for server environment variable setup.
    - Connect your Git repository
    - Netlify will automatically build and deploy
 
-### Vercel
+### Vercel (Recommended - Full Stack Deployment)
+
+**Option 1: Vercel Serverless Functions (Recommended)**
+
+The backend has been converted to Vercel Serverless Functions located in `/api` directory. This allows the entire application (frontend + backend) to run on Vercel.
+
+1. **Build Settings** (already configured in `vercel.json`):
+   - Build command: `npm run build`
+   - Output directory: `dist/public`
+   - API functions are automatically detected from `/api` directory
+
+2. **Environment Variables** (Set in Vercel Dashboard → Settings → Environment Variables):
+   - `EMAIL_USER`: Your Gmail address
+   - `EMAIL_PASS`: Gmail App Password (16 characters)
+   - `RECEIVER_EMAIL`: Email to receive inquiries (defaults to `dawnbudsmodelschool@gmail.com`)
+   - `NODE_ENV`: `production` (usually set automatically)
+   - `VITE_API_URL`: Leave empty (uses relative URLs for same-domain API)
+
+3. **Deploy**:
+   - Connect your Git repository
+   - Vercel will automatically build and deploy both frontend and API functions
+
+**See `VERCEL_DEPLOYMENT.md` for detailed instructions.**
+
+**Option 2: Vercel Frontend + Separate Backend**
+
+If you prefer to keep the Express server separate:
 
 1. **Build Settings** (already configured in `vercel.json`):
    - Build command: `npm run build`
@@ -51,6 +77,7 @@ See `server/README.md` for server environment variable setup.
 
 2. **Environment Variables**:
    - Add `VITE_API_URL` in Vercel dashboard → Project settings → Environment Variables
+   - Point to your separately deployed backend server
 
 3. **Deploy**:
    - Connect your Git repository

@@ -34,8 +34,8 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      // Get API URL from environment or use default
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      // Get API URL from environment or use relative URL (for Vercel serverless functions)
+      const API_URL = import.meta.env.VITE_API_URL || '';
       
       const response = await fetch(`${API_URL}/api/career-application`, {
         method: 'POST',
