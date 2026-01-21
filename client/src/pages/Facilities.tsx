@@ -36,7 +36,7 @@ export default function Facilities() {
       title: "Safety & Security",
       desc: "24/7 CCTV surveillance, security guards, and fire safety compliance ensuring a safe campus.",
       color: "bg-red-500",
-      img: "/Our Facilities/Safety & Security.png"
+      img: "/Our Facilities/CCTV Cams.jpeg"
     },
     {
       icon: <Activity className="w-10 h-10 text-white" />,
