@@ -1,5 +1,5 @@
 import { PageHeader } from "@/components/PageHeader";
-import { Music, Award, Palette, Microscope, Star, Handshake } from "lucide-react";
+import { Music, Palette, Microscope, Star, Handshake } from "lucide-react";
 import { motion } from "framer-motion";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { useState, useEffect } from "react";
@@ -65,115 +65,119 @@ export default function BeyondAcademics() {
       </section>
 
       {/* Our Collaborations Section */}
-      <section className="py-12 md:py-16 lg:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-secondary mb-3 md:mb-4 flex items-center justify-center gap-2 md:gap-3">
-              <Star className="w-6 h-6 md:w-8 md:h-8 text-accent" />
-              Our Collaborations
-            </h2>
-            <p className="text-gray-600 text-base md:text-lg">Strategic partnerships that enhance our educational offerings and student development.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Collaboration Card 1 - Abacus */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow"
-            >
-              <div className="p-6">
-                <h3 className="text-xl font-display font-bold text-secondary mb-4">
-                  Abacus Training
-                </h3>
-                
-                {/* Main Image */}
-                <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-gray-400 text-xs">Main Image</span>
-                </div>
-
-                <p className="text-gray-600 text-sm mb-4">
-                  Description of Abacus collaboration will be added here. This is placeholder text that you can replace with actual collaboration details.
-                </p>
-
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="text-xs font-semibold text-accent uppercase">Academic</span>
-                  <Handshake className="w-5 h-5 text-accent" />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Collaboration Card 2 - IIT Classes */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow"
-            >
-              <div className="p-6">
-                <h3 className="text-xl font-display font-bold text-secondary mb-4">
-                  IIT Classes
-                </h3>
-                
-                {/* Main Image */}
-                <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-gray-400 text-xs">Main Image</span>
-                </div>
-
-                <p className="text-gray-600 text-sm mb-4">
-                  Description of IIT classes collaboration will be added here. This is placeholder text that you can replace with actual collaboration details.
-                </p>
-
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="text-xs font-semibold text-accent uppercase">Academic</span>
-                  <Handshake className="w-5 h-5 text-accent" />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Collaboration Card 3 - Placeholder */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow"
-            >
-              <div className="p-6">
-                <h3 className="text-xl font-display font-bold text-secondary mb-4">
-                  Collaboration Title 3
-                </h3>
-                
-                {/* Main Image */}
-                <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-4">
-                  <span className="text-gray-400 text-xs">Main Image</span>
-                </div>
-
-                <p className="text-gray-600 text-sm mb-4">
-                  Description of collaboration will be added here. This is placeholder text that you can replace with actual collaboration details.
-                </p>
-
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="text-xs font-semibold text-accent uppercase">Category</span>
-                  <Handshake className="w-5 h-5 text-accent" />
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <OurCollaborationsSection />
     </div>
+  );
+}
+
+const COLLABORATIONS = [
+  // Row 1: Quest English, IIT, Abacus
+  {
+    title: "Quest English",
+    image: "/Our Collaborations/quest english.jpeg",
+    description: "Through Quest English we focus on building confidence in communication, vocabulary, and language skills. The programme helps students express themselves clearly and prepares them for a global learning and career environment.",
+    category: "Academic",
+  },
+  {
+    title: "IIT & NEET Foundation",
+    image: "/Our Collaborations/IIT:NEET Foundation.jpeg",
+    description: "Our IIT and NEET foundation programme prepares aspiring students with strong conceptual clarity and exam-oriented learning. Through dedicated mentorship and structured content, we help build a solid base for competitive entrance examinations.",
+    category: "Academic",
+  },
+  {
+    title: "Abacus Training",
+    image: "/Our Collaborations/Abacus.jpeg",
+    description: "We partner with experts to offer structured Abacus training that sharpens mental math, concentration, and problem-solving skills. Students build speed and accuracy in calculations while developing focus and logical thinking from an early age.",
+    category: "Academic",
+  },
+  // Row 2: Robotics, Coding, AI/ML
+  {
+    title: "Robotics",
+    image: "/Our Collaborations/robotics1.jpg",
+    description: "Our Robotics programme gives students hands-on experience in designing, building, and programming robots. They learn mechanics, electronics, and coding while working in teams to solve real-world challenges.",
+    category: "Technology",
+  },
+  {
+    title: "Coding",
+    image: "/Our Collaborations/Coding .jpg",
+    description: "We collaborate to bring structured coding and programming education to our students. From block-based coding to text-based languages, students develop computational thinking, logic, and creativity through building real projects.",
+    category: "Technology",
+  },
+  {
+    title: "AI & Machine Learning",
+    image: "/Our Collaborations/AI:ML.jpg",
+    description: "Our AI and Machine Learning programme introduces students to the fundamentals of artificial intelligence, data, and automation. Through hands-on projects, they learn to think critically and prepare for the technology-driven future.",
+    category: "Technology",
+  },
+  // Row 3: Digital Classroom
+  {
+    title: "Digital Classroom",
+    image: "/Our Collaborations/Digital classroom.jpeg",
+    description: "Our Digital Classroom partnership equips students with tech-enabled learning through smart boards, interactive content, and digital tools. This creates an engaging, modern learning environment that supports varied learning styles.",
+    category: "Academic",
+  },
+];
+
+function OurCollaborationsSection() {
+  return (
+    <section className="py-12 md:py-16 lg:py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12 lg:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-secondary mb-3 md:mb-4 flex items-center justify-center gap-2 md:gap-3">
+            <Star className="w-6 h-6 md:w-8 md:h-8 text-accent" />
+            Our Collaborations
+          </h2>
+          <p className="text-gray-600 text-base md:text-lg">Strategic partnerships that enhance our educational offerings and student development.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {COLLABORATIONS.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * (index + 1) }}
+              className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow"
+            >
+              <div className="p-6">
+                <h3 className="text-xl font-display font-bold text-secondary mb-4">
+                  {item.title}
+                </h3>
+
+                <div className="aspect-video rounded-lg overflow-hidden mb-4 bg-gray-100">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <p className="text-gray-600 text-sm mb-4">
+                  {item.description}
+                </p>
+
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <span className="text-xs font-semibold text-accent uppercase">{item.category}</span>
+                  <Handshake className="w-5 h-5 text-accent" />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
 function CulturalEventsCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const culturalImages = [
-    "/Dbms Event Pics/Bathukamma Celebrations.jpeg",
-    "/Dbms Event Pics/2_Krishnastami Celebrations.jpg"
+    { src: "/Dbms Event Pics/Bathukamma Celebrations.jpeg", alt: "Bathukamma Celebrations" },
+    { src: "/Dbms Event Pics/2_Krishnastami Celebrations.jpg", alt: "Krishna Astami Celebrations" },
+    { src: "/Dbms Event Pics/1_Heritage Fest.jpeg", alt: "Heritage Fest" },
+    { src: "/Dbms Event Pics/1_Sankarthi Celebrations.jpeg", alt: "Sankranti Celebrations" },
+    { src: "/Dbms Event Pics/Teachers Day Celebrations..JPG", alt: "Teachers Day Celebrations" },
   ];
 
   useEffect(() => {
@@ -204,8 +208,8 @@ function CulturalEventsCarousel() {
             <CarouselItem key={index} className="pl-0 basis-full">
               <div className="relative w-full aspect-[4/3] md:aspect-[3/2] overflow-hidden rounded-2xl">
                 <img
-                  src={image}
-                  alt={index === 0 ? "Bathukamma Celebrations" : "Krishna Astami Celebrations"}
+                  src={image.src}
+                  alt={image.alt}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -220,8 +224,12 @@ function CulturalEventsCarousel() {
 function CoCurricularCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const coCurricularImages = [
-    "/Dbms Event Pics/Sports Activity.jpeg",
-    "/Dbms Event Pics/3_Yoga Day.jpeg"
+    { src: "/Dbms Event Pics/Sports Activity.jpeg", alt: "Sports Activity" },
+    { src: "/Dbms Event Pics/3_Yoga Day.jpeg", alt: "Yoga Day" },
+    { src: "/Dbms Event Pics/2_Yello Color Day.jpeg", alt: "Yellow Colour Day" },
+    { src: "/Dbms Event Pics/3_Pre Primary Picnic.jpeg", alt: "Pre Primary Picnic" },
+    { src: "/Dbms Event Pics/4_Kids Athletic Cup.jpeg", alt: "Kids Athletic Cup" },
+    { src: "/Dbms Event Pics/School Picnic.jpeg", alt: "School Picnic" },
   ];
 
   useEffect(() => {
@@ -252,8 +260,8 @@ function CoCurricularCarousel() {
             <CarouselItem key={index} className="pl-0 basis-full">
               <div className="relative w-full aspect-[4/3] md:aspect-[3/2] overflow-hidden rounded-2xl">
                 <img
-                  src={image}
-                  alt={index === 0 ? "Sports Activity" : "Yoga Day"}
+                  src={image.src}
+                  alt={image.alt}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -268,8 +276,10 @@ function CoCurricularCarousel() {
 function ScienceInnovationCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const scienceImages = [
-    "/Dbms Event Pics/3_Robotics Expo.jpeg",
-    "/Dbms Event Pics/3_Science Fair.jpeg"
+    { src: "/Dbms Event Pics/3_Robotics Expo.jpeg", alt: "Robotics Expo" },
+    { src: "/Dbms Event Pics/3_Science Fair.jpeg", alt: "Science Fair" },
+    { src: "/Dbms Event Pics/4_State level Science Fair Participation.jpeg", alt: "State level Science Fair Participation" },
+    { src: "/Dbms Event Pics/BVP NGSC Participation..JPG", alt: "BVP NGSC Participation" },
   ];
 
   useEffect(() => {
@@ -300,8 +310,8 @@ function ScienceInnovationCarousel() {
             <CarouselItem key={index} className="pl-0 basis-full">
               <div className="relative w-full aspect-[4/3] md:aspect-[3/2] overflow-hidden rounded-2xl">
                 <img
-                  src={image}
-                  alt={index === 0 ? "Robotics Expo" : "Science Fair"}
+                  src={image.src}
+                  alt={image.alt}
                   className="w-full h-full object-cover"
                 />
               </div>

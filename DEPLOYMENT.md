@@ -10,23 +10,14 @@
 
 ## Environment Variables
 
-### Frontend (Client)
+### Frontend
 
-Create a `.env` file in the `client` directory (or set in your deployment platform):
+Set in your deployment platform (or `.env` at project root for local):
 
-```env
-# Production API URL - Update this with your deployed server URL
-VITE_API_URL=https://your-api-server.com
-```
+- `VITE_SUPABASE_URL` – Supabase project URL
+- `VITE_SUPABASE_ANON_KEY` – Supabase anon public key
 
-**Important**: 
-- For Netlify: Set environment variables in Site settings → Environment variables
-- For Vercel: Set environment variables in Project settings → Environment Variables
-- The default fallback is `http://localhost:3001` (for development only)
-
-### Backend (Server)
-
-See `server/README.md` for server environment variable setup.
+See `SUPABASE_SETUP.md` for details. Admission and career forms submit directly to Supabase; no separate backend is required.
 
 ## Deployment Platforms
 
@@ -37,51 +28,27 @@ See `server/README.md` for server environment variable setup.
    - Publish directory: `dist/public`
 
 2. **Environment Variables**:
-   - Add `VITE_API_URL` in Netlify dashboard → Site settings → Environment variables
+   - Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in Netlify dashboard → Site settings → Environment variables
 
 3. **Deploy**:
    - Connect your Git repository
    - Netlify will automatically build and deploy
 
-### Vercel (Recommended - Full Stack Deployment)
-
-**Option 1: Vercel Serverless Functions (Recommended)**
-
-The backend has been converted to Vercel Serverless Functions located in `/api` directory. This allows the entire application (frontend + backend) to run on Vercel.
+### Vercel (Recommended)
 
 1. **Build Settings** (already configured in `vercel.json`):
    - Build command: `npm run build`
    - Output directory: `dist/public`
-   - API functions are automatically detected from `/api` directory
 
 2. **Environment Variables** (Set in Vercel Dashboard → Settings → Environment Variables):
-   - `EMAIL_USER`: Your Gmail address
-   - `EMAIL_PASS`: Gmail App Password (16 characters)
-   - `RECEIVER_EMAIL`: Email to receive inquiries (defaults to `dawnbudsmodelschool@gmail.com`)
-   - `NODE_ENV`: `production` (usually set automatically)
-   - `VITE_API_URL`: Leave empty (uses relative URLs for same-domain API)
-
-3. **Deploy**:
-   - Connect your Git repository
-   - Vercel will automatically build and deploy both frontend and API functions
-
-**See `VERCEL_DEPLOYMENT.md` for detailed instructions.**
-
-**Option 2: Vercel Frontend + Separate Backend**
-
-If you prefer to keep the Express server separate:
-
-1. **Build Settings** (already configured in `vercel.json`):
-   - Build command: `npm run build`
-   - Output directory: `dist/public`
-
-2. **Environment Variables**:
-   - Add `VITE_API_URL` in Vercel dashboard → Project settings → Environment Variables
-   - Point to your separately deployed backend server
+   - `VITE_SUPABASE_URL`: Supabase project URL
+   - `VITE_SUPABASE_ANON_KEY`: Supabase anon public key
 
 3. **Deploy**:
    - Connect your Git repository
    - Vercel will automatically build and deploy
+
+**See `VERCEL_DEPLOYMENT.md` for details.**
 
 ## Build Output
 
@@ -98,16 +65,11 @@ All chunks are under 500KB for optimal loading performance.
 
 1. **Verify**:
    - Check that all pages load correctly
-   - Test form submissions (Admissions and Contact pages)
+   - Test form submissions (Admissions and Contact pages); data is stored in Supabase and viewable in Admin → Inquiries
    - Verify images load properly
    - Test on mobile devices
 
-2. **API Configuration**:
-   - Ensure your backend server is deployed and accessible
-   - Update `VITE_API_URL` to point to your production API
-   - Test form submissions end-to-end
-
-3. **Performance**:
+2. **Performance**:
    - Check Lighthouse scores
    - Verify images are optimized
    - Test page load times
@@ -115,8 +77,8 @@ All chunks are under 500KB for optimal loading performance.
 ## Troubleshooting
 
 ### Forms Not Submitting
-- Check that `VITE_API_URL` is set correctly
-- Verify backend server is running and accessible
+- Ensure `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are set
+- Run the `admission_inquiries` and `career_applications` table creation SQL in Supabase (see `SUPABASE_SETUP.md`)
 - Check browser console for errors
 
 ### Images Not Loading
@@ -125,5 +87,5 @@ All chunks are under 500KB for optimal loading performance.
 - Ensure images are included in the build
 
 ### Routing Issues
-- Verify `_redirects` file (Netlify) or `vercel.json` rewrites are configured
+- Verify `netlify.toml` redirects or `vercel.json` rewrites are configured
 - All routes should redirect to `/index.html` for client-side routing

@@ -8,42 +8,42 @@ export default function Facilities() {
       title: "Computer Lab",
       desc: "Modern computer lab with high-speed internet and latest software for hands-on technical learning.",
       color: "bg-blue-500",
-      img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
+      img: "/Our Facilities/Computer lab.jpg"
     },
     {
       icon: <Bot className="w-10 h-10 text-white" />,
       title: "Robotics Lab",
       desc: "State-of-the-art robotics lab equipped with advanced kits, programming tools, and hands-on learning resources to foster innovation and STEM skills.",
       color: "bg-purple-500",
-      img: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop"
+      img: "/Our Facilities/Robotics Lab.jpg"
     },
     {
       icon: <Library className="w-10 h-10 text-white" />,
       title: "Library",
       desc: "A vast collection of books, journals, and reference materials to cultivate reading habits.",
       color: "bg-amber-500",
-      img: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=2070&auto=format&fit=crop"
+      img: "/Our Facilities/library.gif"
     },
     {
       icon: <Bus className="w-10 h-10 text-white" />,
       title: "Transport",
       desc: "Safe and secure bus facility covering major routes in Hyderabad with GPS tracking.",
       color: "bg-yellow-500",
-      img: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?q=80&w=2071&auto=format&fit=crop"
+      img: "/Our Facilities/Transport.jpeg"
     },
     {
       icon: <ShieldCheck className="w-10 h-10 text-white" />,
       title: "Safety & Security",
       desc: "24/7 CCTV surveillance, security guards, and fire safety compliance ensuring a safe campus.",
       color: "bg-red-500",
-      img: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2070&auto=format&fit=crop"
+      img: "/Our Facilities/Safety & Security.png"
     },
     {
       icon: <Activity className="w-10 h-10 text-white" />,
       title: "Sports Area",
       desc: "Dedicated areas for indoor and outdoor games to promote physical fitness.",
       color: "bg-indigo-500",
-      img: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=2070&auto=format&fit=crop"
+      img: "/Our Facilities/Sports Activity.jpeg"
     }
   ];
 

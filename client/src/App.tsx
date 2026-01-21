@@ -2,6 +2,7 @@ import { Switch, Route, useLocation } from "wouter";
 import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 
@@ -15,9 +16,11 @@ import Admissions from "@/pages/Admissions";
 import Gallery from "@/pages/Gallery";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
+import AdminLogin from "@/pages/admin/AdminLogin";
+import AdminDashboard from "@/pages/admin/AdminDashboard";
 
-// Get base path from import.meta.env or default to /DBMS-Website/
-const BASE_PATH = import.meta.env.BASE_URL || '/DBMS-Website/';
+// Get base path from import.meta.env or default to /
+const BASE_PATH = import.meta.env.BASE_URL || '/';
 
 function Router() {
   // Handle GitHub Pages 404.html redirect
@@ -45,6 +48,8 @@ function Router() {
       <Route path="/admissions" component={Admissions} />
       <Route path="/gallery" component={Gallery} />
       <Route path="/contact" component={Contact} />
+      <Route path="/login" component={AdminLogin} />
+      <Route path="/admin" component={AdminDashboard} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -62,17 +67,22 @@ function ScrollToTop() {
 }
 
 function App() {
+  const [location] = useLocation();
+  const isAdmin = location.startsWith("/admin") || location === "/login";
+
   return (
     <TooltipProvider>
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen">
-        <Navigation />
-        <main className="flex-grow pt-20"> {/* pt-20 to account for fixed header */}
-          <Router />
-        </main>
-        <Footer />
-      </div>
-      <Toaster />
+      <AuthProvider>
+        <ScrollToTop />
+        <div className="flex flex-col min-h-screen">
+          {!isAdmin && <Navigation />}
+          <main className={`flex-grow ${isAdmin ? "pt-0" : "pt-20"}`}>
+            <Router />
+          </main>
+          {!isAdmin && <Footer />}
+        </div>
+        <Toaster />
+      </AuthProvider>
     </TooltipProvider>
   );
 }

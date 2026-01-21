@@ -1,139 +1,45 @@
-# Setup Guide - Admission Inquiry Form with Email
-
-This guide will help you set up the email functionality for the Admission Inquiry form.
+# Setup Guide
 
 ## Quick Start
 
-### 1. Install Server Dependencies
+### 1. Install Dependencies
 
 ```bash
-cd server
 npm install
 ```
 
-### 2. Configure Email Settings
+### 2. Configure Supabase
 
-Create a `.env` file in the `server` directory:
-
-```bash
-cd server
-cp env.example .env
-```
-
-Then edit `server/.env` with your email credentials:
+Create a `.env` file in the **project root** (same folder as `vite.config.ts`):
 
 ```env
-EMAIL_USER=your-email@gmail.com
-EMAIL_PASS=your-gmail-app-password
-RECEIVER_EMAIL=dawnbudsmodelschool@gmail.com
-PORT=3001
-NODE_ENV=development
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your_anon_key_here
 ```
 
-### 3. Get Gmail App Password
+Get these from **Supabase Dashboard → Project Settings → API**.  
+See [SUPABASE_SETUP.md](SUPABASE_SETUP.md) for:
 
-**Important:** Gmail requires an App Password (not your regular password) for security.
+- Creating `gallery`, `news`, `admission_inquiries`, and `career_applications` tables with RLS
+- `gallery-images` storage bucket
+- First admin user
 
-1. Go to https://myaccount.google.com/
-2. Enable **2-Step Verification** if not already enabled
-3. Go to **App passwords**: https://myaccount.google.com/apppasswords
-4. Select "Mail" and "Other (Custom name)" → Enter "The Dawn Buds Model School Website"
-5. Click "Generate"
-6. Copy the 16-character password
-7. Use this password as `EMAIL_PASS` in your `.env` file
+### 3. Run the App
 
-### 4. Configure Frontend (Optional)
-
-If your server runs on a different URL, create a `.env` file in the `client` directory:
-
-```env
-VITE_API_URL=http://localhost:3001
-```
-
-For production, update this to your deployed server URL.
-
-### 5. Run the Application
-
-**Option A: Run both frontend and backend together**
-```bash
-# From root directory
-npm run dev:all
-```
-
-**Option B: Run separately**
-
-Terminal 1 (Frontend):
 ```bash
 npm run dev
 ```
 
-Terminal 2 (Backend):
-```bash
-npm run dev:server
-```
+Open http://localhost:5173 (or the URL Vite prints).
 
-### 6. Test the Form
+## Forms and Admin
 
-1. Open http://localhost:5173 (or your Vite dev server URL)
-2. Navigate to the Admissions page
-3. Fill out the Admission Inquiry form
-4. Click "Submit Inquiry"
-5. Check your email (dawnbudsmodelschool@gmail.com) for the inquiry
-
-## How It Works
-
-1. User fills out the form on the Admissions page
-2. Frontend sends a POST request to `/api/admission-inquiry`
-3. Server receives the data and sends two emails:
-   - **To you**: Contains all the inquiry details
-   - **To the parent**: Confirmation email with their inquiry details
-
-## Deployment
-
-### Deploying the Server
-
-You can deploy the server to:
-- **Heroku**: Add a `Procfile` with `web: node index.js`
-- **Railway**: Connect your GitHub repo, set environment variables
-- **Render**: Create a new Web Service, set environment variables
-- **DigitalOcean**: Use App Platform or a Droplet
-
-### Environment Variables for Production
-
-Set these in your hosting platform:
-- `EMAIL_USER`: Your Gmail address
-- `EMAIL_PASS`: Your Gmail App Password
-- `RECEIVER_EMAIL`: dawnbudsmodelschool@gmail.com
-- `PORT`: Usually set automatically by the platform
-- `NODE_ENV`: production
-
-### Update Frontend for Production
-
-Update `VITE_API_URL` in your frontend build to point to your deployed server URL.
+- **Admission form** (`/admissions`): Submissions go to Supabase `admission_inquiries`.
+- **Career form** (`/contact`): Submissions go to Supabase `career_applications`.
+- **Admin** (`/admin`): Log in with a Supabase user. Use **Inquiries** to view admission and career responses; **Manage Gallery** and **Manage Latest News** for CMS.
 
 ## Troubleshooting
 
-### Email Not Sending
-
-1. **Check App Password**: Make sure you're using an App Password, not your regular Gmail password
-2. **Verify 2-Step Verification**: Must be enabled to generate App Passwords
-3. **Check Email Address**: `EMAIL_USER` must match the account that generated the App Password
-4. **Check Server Logs**: Look for error messages in the server console
-
-### CORS Errors
-
-- The server already has CORS enabled
-- Make sure `VITE_API_URL` in frontend matches your server URL
-
-### Connection Refused
-
-- Verify the server is running: `npm run dev:server`
-- Check the port in `.env` matches what you're connecting to
-- Ensure no firewall is blocking the connection
-
-## Support
-
-If you encounter issues:
-1. Check the server console for error messages
-2. Verify all environment variables are set correctly
-3. Test the `/api/health` endpoint: `http://localhost:3001/api/health`
+- **Forms not saving**: Run the `admission_inquiries` and `career_applications` SQL in `SUPABASE_SETUP.md` (sections 2.3 and 2.4).
+- **Login fails**: Check `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`; restart `npm run dev` after changing `.env`.
+- **Build**: `npm run build` and `npm run check` (TypeScript).

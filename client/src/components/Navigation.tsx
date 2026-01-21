@@ -33,7 +33,7 @@ export function Navigation() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="opacity-80">EST. 2000</span>
+            <span className="opacity-80">EST. 2001</span>
           </div>
         </div>
       </div>

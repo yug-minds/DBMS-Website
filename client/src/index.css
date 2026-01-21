@@ -65,3 +65,33 @@
 .text-gradient {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
 }
+
+/* Latest News: scrollable viewport for swipe + JS auto-scroll */
+.news-scroll-viewport {
+  @apply relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+}
+.news-scroll-viewport:active {
+  cursor: grabbing;
+}
+
+.news-scroll-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.news-scroll-track {
+  @apply flex;
+}
+
+/* Edge fades removed: the overlay was obscuring card content (e.g. rightmost "SSC exam dates" card).
+   To restore a subtle fade, use a low-opacity gradient and narrow width; e.g.:
+   .news-fade { @apply absolute top-0 bottom-0 pointer-events-none z-10; width: 1.5rem; }
+   .news-fade-left { left: 0; background: linear-gradient(to right, rgba(249,250,251,0.35), transparent); }
+   .news-fade-right { right: 0; left: auto; background: linear-gradient(to left, rgba(249,250,251,0.35), transparent); }
+*/

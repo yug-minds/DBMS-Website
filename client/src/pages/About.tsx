@@ -8,7 +8,7 @@ export default function About() {
       {/* library or reading room */}
       <PageHeader 
         title="About Us" 
-        subtitle="Dedicated to fostering academic excellence and character development since 2000."
+        subtitle="Dedicated to fostering academic excellence and character development since 2001."
         image="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=2128&auto=format&fit=crop"
       />
 
@@ -20,10 +20,10 @@ export default function About() {
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-secondary mb-3 md:mb-4">Our Story</h2>
                 <div className="w-12 md:w-16 h-1 bg-accent rounded-full mb-4 md:mb-6" />
                 <p className="text-gray-600 leading-relaxed text-base md:text-lg">
-                  Dawn Buds Model School was established in 2000 with a humble beginning and a grand vision: to provide affordable, high-quality education to the community. Over the last two decades, we have grown into a premier institution known for our academic rigor and holistic approach.
+                  Dawn Buds Model School was established in 2001 with a humble beginning and a grand vision: to provide affordable, high-quality education to the community. Over the last two decades, we have grown into a premier institution known for our academic rigor and holistic approach.
                 </p>
                 <p className="text-gray-600 leading-relaxed text-base md:text-lg mt-3 md:mt-4">
-                  Located in the heart of Hyderabad at Begumpet, beside Sai Hanuman Temple, our campus at Shamlal Buildings has been a second home to thousands of students who have gone on to excel in various fields globally.
+                  Located in the heart of Hyderabad at Begumpet, Beside Sai Hanuman Temple, our campus at Shyamlal Building has been a second home to thousands of students who have gone on to excel in various fields globally.
                 </p>
               </div>
             </div>
@@ -179,7 +179,7 @@ export default function About() {
                 
                 <div className="space-y-4 mt-6">
                   <p className="text-gray-600 leading-relaxed text-base">
-                    Our main campus located in Begumpet, Hyderabad, has been serving the community since 2000. This flagship location offers comprehensive education from primary to secondary levels, with state-of-the-art facilities and a dedicated faculty committed to nurturing young minds.
+                    Our main campus located in Begumpet, Hyderabad, has been serving the community since 2001. This flagship location offers comprehensive education from primary to secondary levels, with state-of-the-art facilities and a dedicated faculty committed to nurturing young minds.
                   </p>
                   
                   <div className="flex items-start gap-3 pt-4 border-t border-gray-100">
@@ -189,9 +189,10 @@ export default function About() {
                     <div className="flex-1">
                       <h4 className="font-semibold text-gray-900 text-sm mb-1">Address</h4>
                       <p className="text-gray-600 text-sm mb-2">
-                        1-11-110/17/B/9, Shamlal Buildings<br/>
-                        beside Sai Hanuman Temple, Begumpet<br/>
-                        Hyderabad, Telangana 500016
+                        <strong className="font-bold text-gray-900">Dawn Buds Model School</strong><br />
+                        <span className="block whitespace-nowrap">1-11-110/17/B/9, Shyamlal Building,</span>
+                        <span className="block whitespace-nowrap">Beside Sai Hanuman Temple, Begumpet,</span>
+                        <span className="block whitespace-nowrap">Hyderabad, Telangana - 500016</span>
                       </p>
                       <a 
                         href="https://www.google.com/maps?ll=17.447177,78.459934&z=15&t=m&hl=en-US&gl=US&mapclient=embed&cid=3573388977949407245" 

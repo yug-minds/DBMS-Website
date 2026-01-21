@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 // Minimal schema for the inquiry form frontend
 const formSchema = z.object({
@@ -36,41 +37,37 @@ export default function Admissions() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true);
-    
-    try {
-      // Get API URL from environment or use relative URL (for Vercel serverless functions)
-      const API_URL = import.meta.env.VITE_API_URL || '';
-      
-      const response = await fetch(`${API_URL}/api/admission-inquiry`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
+    if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY) {
+      toast({
+        title: "Configuration Error",
+        description: "Supabase is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to .env (see SUPABASE_SETUP.md).",
+        variant: "destructive",
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to submit inquiry');
-      }
-
+      return;
+    }
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase.from("admission_inquiries").insert({
+        name: values.name.trim(),
+        email: values.email.trim(),
+        phone: values.phone.trim(),
+        class_interest: values.classInterest,
+        message: values.message?.trim() || null,
+      });
+      if (error) throw error;
       form.reset();
       toast({
         title: "Inquiry Sent Successfully!",
         description: "We have received your message and will contact you shortly.",
         variant: "default",
       });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast({
-        title: "Submission Failed",
-        description: error instanceof Error 
-          ? error.message 
-          : "Failed to submit inquiry. Please try again later or contact us directly.",
-        variant: "destructive",
-      });
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      let description = "Failed to submit inquiry. Please try again later or contact us directly.";
+      if (err != null && typeof err === "object" && "message" in err && (err as { message: unknown }).message)
+        description = String((err as { message: string }).message);
+      else if (err instanceof Error && err.message) description = err.message;
+      toast({ title: "Submission Failed", description, variant: "destructive" });
     } finally {
       setIsSubmitting(false);
     }
@@ -210,7 +207,7 @@ export default function Admissions() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Class Interested</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <Select onValueChange={field.onChange} value={field.value || undefined}>
                             <FormControl>
                               <SelectTrigger>
                                 <SelectValue placeholder="Select Class" />

@@ -48,7 +48,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-white/70 text-sm leading-relaxed">
-              Empowering young minds with holistic education and values since 2000. 
+              Empowering young minds with holistic education and values since 2001. 
               We strive for excellence in character and academics.
             </p>
             <div className="flex space-x-4">
@@ -102,7 +102,13 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-white/70">
                 <MapPin className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                <span>1-11-110/17/B/9, Shamlal Buildings, beside Sai Hanuman Temple, Begumpet, Hyderabad, Telangana 500016</span>
+                <span>
+                  <strong className="font-bold text-white">Dawn Buds Model School</strong>
+                  <br />
+                  <span className="block whitespace-nowrap">1-11-110/17/B/9, Shyamlal Building,</span>
+                  <span className="block whitespace-nowrap">Beside Sai Hanuman Temple, Begumpet,</span>
+                  <span className="block whitespace-nowrap">Hyderabad, Telangana - 500016</span>
+                </span>
               </li>
               <li className="flex items-center gap-3 text-white/70">
                 <Phone className="w-5 h-5 text-accent shrink-0" />

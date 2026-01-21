@@ -1,6 +1,5 @@
 import { PageHeader } from "@/components/PageHeader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BrainCircuit, BookOpen, GraduationCap } from "lucide-react";
 
 export default function Academics() {
@@ -52,7 +51,7 @@ export default function Academics() {
                 </div>
                 {/* kindergarten kids */}
                 <img 
-                  src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1000&auto=format&fit=crop" 
+                  src="/acadamic wings images/Pre Primary.jpeg" 
                   alt="Kindergarten" 
                   className="rounded-2xl shadow-xl w-full aspect-video object-cover"
                 />
@@ -64,7 +63,7 @@ export default function Academics() {
                 <div className="space-y-4 md:space-y-6 order-last md:order-first">
                   {/* primary kids reading */}
                   <img 
-                    src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop" 
+                    src="/acadamic wings images/Primary Activity.jpeg" 
                     alt="Primary School" 
                     className="rounded-2xl shadow-xl w-full"
                   />
@@ -108,7 +107,7 @@ export default function Academics() {
                 </div>
                 {/* high school students */}
                 <img 
-                  src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1000&auto=format&fit=crop" 
+                  src="/acadamic wings images/High School Activity.jpeg" 
                   alt="High School" 
                   className="rounded-2xl shadow-xl w-full"
                 />
