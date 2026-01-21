@@ -2,6 +2,19 @@
   command = "npm run build"
   publish = "dist/public"
 
+# Redirect www to non-www (canonical: https://dawnbudsmodelschool.com)
+[[redirects]]
+  from = "https://www.dawnbudsmodelschool.com/*"
+  to = "https://dawnbudsmodelschool.com/:splat"
+  status = 301
+  force = true
+[[redirects]]
+  from = "http://www.dawnbudsmodelschool.com/*"
+  to = "https://dawnbudsmodelschool.com/:splat"
+  status = 301
+  force = true
+
+# SPA: serve index.html for all routes
 [[redirects]]
   from = "/*"
   to = "/index.html"

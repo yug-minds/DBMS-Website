@@ -21,6 +21,16 @@ See `SUPABASE_SETUP.md` for details. Admission and career forms submit directly 
 
 ## Deployment Platforms
 
+### Custom domain: www and non-www
+
+**Canonical URL:** `https://dawnbudsmodelschool.com` (non-www)
+
+- **Netlify / Vercel:** Add both domains in the dashboard:
+  - `dawnbudsmodelschool.com`
+  - `www.dawnbudsmodelschool.com`
+- `netlify.toml` and `vercel.json` already redirect **www → non-www** (301). Both URLs work; www is redirected to the canonical.
+- **DNS (e.g. Hostinger):** Point the root (`dawnbudsmodelschool.com`) and `www` to your Netlify/Vercel host. The app does the www→non-www redirect.
+
 ### Netlify
 
 1. **Build Settings** (already configured in `netlify.toml`):

@@ -82,7 +82,8 @@ export function Footer() {
                 { label: "Admissions", href: "/admissions" },
                 { label: "Academics", href: "/academics" },
                 { label: "Gallery", href: "/gallery" },
-                { label: "Contact", href: "/contact" }
+                { label: "Contact", href: "/contact" },
+                { label: "Sitemap", href: "/sitemap" }
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-white/70 hover:text-accent transition-colors flex items-center gap-2">
