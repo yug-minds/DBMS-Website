@@ -15,7 +15,14 @@
   force = true
 
 # SPA: serve index.html for all routes
+# Note: Static files like sitemap.xml are served before redirects
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  
+# Headers for sitemap.xml
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml"

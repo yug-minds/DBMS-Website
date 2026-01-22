@@ -16,6 +16,7 @@ import Admissions from "@/pages/Admissions";
 import Gallery from "@/pages/Gallery";
 import Contact from "@/pages/Contact";
 import Sitemap from "@/pages/Sitemap";
+import SitemapXml from "@/pages/SitemapXml";
 import NotFound from "@/pages/not-found";
 import AdminLogin from "@/pages/admin/AdminLogin";
 import AdminDashboard from "@/pages/admin/AdminDashboard";
@@ -50,6 +51,7 @@ function Router() {
       <Route path="/gallery" component={Gallery} />
       <Route path="/contact" component={Contact} />
       <Route path="/sitemap" component={Sitemap} />
+      <Route path="/sitemap.xml" component={SitemapXml} />
       <Route path="/login" component={AdminLogin} />
       <Route path="/admin" component={AdminDashboard} />
       <Route component={NotFound} />
