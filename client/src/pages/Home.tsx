@@ -436,7 +436,7 @@ export default function Home() {
               {
                 title: "High School",
                 desc: "Rigorous academic preparation for board exams and competitive future. Empowering students for success beyond the classroom.",
-                image: "/acadamic wings images/High School Activity.jpeg",
+                image: "/Our Collaborations/robotics1.jpg",
                 gradient: "from-purple-500 to-indigo-500",
                 bgColor: "bg-purple-50",
                 borderColor: "border-purple-200",
@@ -585,7 +585,9 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-12 md:py-16 lg:py-24 bg-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px)`,
+        }}></div>
         <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 md:mb-6">Start Your Journey With Us</h2>
           <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 md:mb-10 max-w-2xl mx-auto">

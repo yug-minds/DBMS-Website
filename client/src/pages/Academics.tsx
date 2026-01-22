@@ -9,7 +9,7 @@ export default function Academics() {
   
   // Validate tab parameter and set default
   const validTabs = ['pre-primary', 'primary', 'high-school'];
-  const defaultTab = tabParam && validTabs.includes(tabParam) ? tabParam : 'high-school';
+  const defaultTab = tabParam && validTabs.includes(tabParam) ? tabParam : 'pre-primary';
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -115,7 +115,7 @@ export default function Academics() {
                 </div>
                 {/* high school students */}
                 <img 
-                  src="/acadamic wings images/High School Activity.jpeg" 
+                  src="/Our Collaborations/robotics1.jpg" 
                   alt="High School" 
                   className="rounded-2xl shadow-xl w-full"
                 />
