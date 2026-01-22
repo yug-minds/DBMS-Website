@@ -96,9 +96,9 @@ export default function Contact() {
                       <h4 className="font-bold text-gray-900 text-sm md:text-base">Address</h4>
                       <p className="text-gray-600 text-xs md:text-sm">
                         <strong className="font-bold text-gray-900">Dawn Buds Model School</strong><br />
-                        <span className="block whitespace-nowrap">1-11-110/17/B/9, Shyamlal Building,</span>
-                        <span className="block whitespace-nowrap">Beside Sai Hanuman Temple, Begumpet,</span>
-                        <span className="block whitespace-nowrap">Hyderabad, Telangana - 500016</span>
+                        <span className="block">1-11-110/17/B/9, Shyamlal Building,</span>
+                        <span className="block">Beside Sai Hanuman Temple, Begumpet,</span>
+                        <span className="block">Hyderabad, Telangana - 500016</span>
                       </p>
                     </div>
                   </div>

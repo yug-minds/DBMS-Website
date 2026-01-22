@@ -213,7 +213,7 @@ export default function Home() {
       </div>
 
       {/* Latest News — infinite scroll, 2 cards visible, mobile-optimized */}
-      <section className="py-10 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="mt-8 md:mt-12 lg:mt-16 py-10 sm:py-12 md:py-16 lg:py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-80 sm:opacity-90" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -346,7 +346,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Director's Message */}
+      {/* Principal's Message */}
       <section className="py-12 md:py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
@@ -368,7 +368,7 @@ export default function Home() {
             
             <div className="space-y-8">
               <div>
-                <span className="text-accent font-bold tracking-wider text-xs md:text-sm uppercase">Director's Message</span>
+                <span className="text-accent font-bold tracking-wider text-xs md:text-sm uppercase">Principal's Message</span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-secondary mt-2 mb-4 md:mb-6">
                   Nurturing the Leaders of Tomorrow
                 </h2>

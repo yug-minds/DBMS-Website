@@ -190,9 +190,9 @@ export default function About() {
                       <h4 className="font-semibold text-gray-900 text-sm mb-1">Address</h4>
                       <p className="text-gray-600 text-sm mb-2">
                         <strong className="font-bold text-gray-900">Dawn Buds Model School</strong><br />
-                        <span className="block whitespace-nowrap">1-11-110/17/B/9, Shyamlal Building,</span>
-                        <span className="block whitespace-nowrap">Beside Sai Hanuman Temple, Begumpet,</span>
-                        <span className="block whitespace-nowrap">Hyderabad, Telangana - 500016</span>
+                        <span className="block">1-11-110/17/B/9, Shyamlal Building,</span>
+                        <span className="block">Beside Sai Hanuman Temple, Begumpet,</span>
+                        <span className="block">Hyderabad, Telangana - 500016</span>
                       </p>
                       <a 
                         href="https://www.google.com/maps?ll=17.447177,78.459934&z=15&t=m&hl=en-US&gl=US&mapclient=embed&cid=3573388977949407245" 
