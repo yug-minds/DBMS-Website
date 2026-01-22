@@ -420,7 +420,7 @@ export default function Home() {
                 borderColor: "border-amber-200",
                 iconBg: "bg-amber-100",
                 iconColor: "text-amber-600",
-                link: "/academics"
+                link: "/academics?tab=pre-primary"
               },
               {
                 title: "Primary",
@@ -431,7 +431,7 @@ export default function Home() {
                 borderColor: "border-blue-200",
                 iconBg: "bg-blue-100",
                 iconColor: "text-blue-600",
-                link: "/academics"
+                link: "/academics?tab=primary"
               },
               {
                 title: "High School",
@@ -442,7 +442,7 @@ export default function Home() {
                 borderColor: "border-purple-200",
                 iconBg: "bg-purple-100",
                 iconColor: "text-purple-600",
-                link: "/academics"
+                link: "/academics?tab=high-school"
               }
             ].map((wing, i) => (
               <motion.div 

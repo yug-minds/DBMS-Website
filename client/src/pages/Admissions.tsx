@@ -115,7 +115,7 @@ export default function Admissions() {
                     <thead className="bg-gray-50">
                       <tr>
                         <th className="p-3 md:p-4 font-bold text-secondary text-xs md:text-sm uppercase tracking-wider">Class</th>
-                        <th className="p-3 md:p-4 font-bold text-secondary text-xs md:text-sm uppercase tracking-wider">Age (as of June 1st)</th>
+                        <th className="p-3 md:p-4 font-bold text-secondary text-xs md:text-sm uppercase tracking-wider">Age (as of August 31st as per Telangana Government)</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
@@ -134,8 +134,12 @@ export default function Admissions() {
                   <AccordionItem value="item-1">
                     <AccordionTrigger>What are the school timings?</AccordionTrigger>
                     <AccordionContent>
-                      Nursery to UKG: 8:30 AM to 12:30 PM. <br/>
-                      Class 1 to 10: 8:30 AM to 3:30 PM.
+                      <ul className="list-disc list-inside space-y-2">
+                        <li>Nursery: 9:00 AM to 12:00 PM.</li>
+                        <li>LKG and UKG: 9:00 AM to 3:15 PM.</li>
+                        <li>Class 1 & 2: 9:00 AM to 3:30 PM.</li>
+                        <li>Class 3 to 10: 9:00 AM to 3:45 PM.</li>
+                      </ul>
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-2">

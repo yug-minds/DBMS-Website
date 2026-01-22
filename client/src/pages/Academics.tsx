@@ -3,6 +3,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BrainCircuit, BookOpen, GraduationCap } from "lucide-react";
 
 export default function Academics() {
+  // Read tab from URL query parameter
+  const searchParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
+  const tabParam = searchParams.get('tab');
+  
+  // Validate tab parameter and set default
+  const validTabs = ['pre-primary', 'primary', 'high-school'];
+  const defaultTab = tabParam && validTabs.includes(tabParam) ? tabParam : 'high-school';
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* student writing */}
@@ -22,7 +30,7 @@ export default function Academics() {
             </p>
           </div>
 
-          <Tabs defaultValue="high-school" className="w-full">
+          <Tabs defaultValue={defaultTab} className="w-full">
             <div className="flex justify-center mb-8 md:mb-12 overflow-x-auto pb-2">
               <TabsList className="bg-white p-1 rounded-full shadow-sm border border-gray-200 inline-flex w-auto min-w-full sm:min-w-0">
                 <TabsTrigger value="pre-primary" className="rounded-full px-3 sm:px-4 md:px-6 py-2 text-xs sm:text-sm data-[state=active]:bg-primary data-[state=active]:text-white whitespace-nowrap">Pre-Primary</TabsTrigger>
