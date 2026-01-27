@@ -37,14 +37,6 @@ export default function Admissions() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY) {
-      toast({
-        title: "Configuration Error",
-        description: "Supabase is not configured. Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to .env (see SUPABASE_SETUP.md).",
-        variant: "destructive",
-      });
-      return;
-    }
     setIsSubmitting(true);
     try {
       const { error } = await supabase.from("admission_inquiries").insert({

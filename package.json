@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:hostinger": "vite build && npm run copy-htaccess",
+    "copy-htaccess": "node scripts/copy-htaccess.js",
     "preview": "vite preview",
     "check": "tsc"
   },
